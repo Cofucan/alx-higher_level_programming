@@ -1,4 +1,4 @@
-<h1 align="center">Holberton School Higher-Level Programming</h1>
+<h1 align="center">ALX Higher-Level Programming</h1>
 This repository contains my code submissions to tasks given while studying higher level programming in the ALX Software Engineering program. It contains Python, C and SQL code.
 
 ---
