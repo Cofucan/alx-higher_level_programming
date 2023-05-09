@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-print("{}".format("acdefghijklmnopqrstuvwxyz"), end="")
+for s in "abcdefghijklmnopqrstuvwxyz":
+    print("{}".format(s), end="")
