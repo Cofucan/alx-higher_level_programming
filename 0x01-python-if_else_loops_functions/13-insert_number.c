@@ -20,11 +20,8 @@ listint_t *insert_node(listint_t **head, int number)
 
 	new_node->n = number;
 
-	if (!*head) /* If list is empty */
-		return (NULL);
-
-	/* If number to be inserted is less than the first number */
-	if (curr->n >= number)
+	/* If list is empty or num to be inserted is less than the first number */
+	if (*head == NULL || curr->n >= number)
 	{
 		new_node->next = *head;
 		*head = new_node;
