@@ -20,14 +20,14 @@ This repository contains my code submissions to tasks given while studying highe
 
 ## Technologies Used
 
-The Python scripts were built with **Python 3.11.2** but are also tested in a virtual environment using Python 3.8.5 as instructed.
+The Python scripts were built with **Python 3.11.2** but are also tested in a conda environment using Python **3.8.5** as instructed.
 
-- [Oh-My-ZSH](https://ohmyz.sh/): A Unix shell, similar to Bash.
-- [Valgrind](https://valgrind.org/): A programming tool for memory debugging, leak detection and profiling.
 - [GCC](https://gcc.gnu.org/): Compiler for C/C++.
 - [Make](https://www.gnu.org/software/make/manual/make.html): Utility tool that I use for running repetitive commands.
+- [Valgrind](https://valgrind.org/): A programming tool for memory debugging, leak detection and profiling.
 - [Betty](https://github.com/holbertonschool/Betty): Holberton-style C code checker written in Perl.
 - [GDB](https://www.sourceware.org/gdb/): Command-line debugger that works with many low level languages including C/C++.
+- [Oh-My-ZSH](https://ohmyz.sh/): A Unix shell, similar to Bash.
 - [Neovim](https://neovim.io/): An upgraded version of the VIM code editor.
 - [Lunarvim](https://www.lunarvim.org/): An IDE layer for Neovim with sane defaults. Completely free and community driven.
 - [WSL](https://learn.microsoft.com/en-us/windows/wsl/install): Windows OS feature, by Microsoft, that enables Linux to be run natively on Windows.
