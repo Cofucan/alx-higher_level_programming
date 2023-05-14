@@ -46,7 +46,7 @@ int check_palindrome_reverse_half(listint_t **head)
 	listint_t *slow = *head;
 	listint_t *fast = *head;
 
-	while (fast->next->next)
+	while (fast->next && fast->next->next)
 	{
 		slow = slow->next;
 		fast = fast->next->next;
