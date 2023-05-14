@@ -31,13 +31,13 @@ int is_palindrome(listint_t **head)
 	for (x = 0; x < list_len; x++, curr = curr->next)
 		numbers[x] = curr->n;
 
-	if (list_len > 1 && (list_len & 1) == 0)
-	{ /* If there are more than 1 (even number) nodes in the list */
+	if ((list_len & 1) == 0)
+	{ /* If there's an even number of nodes int the list */
 		right_idx = list_len / 2;
 		left_idx = right_idx - 1;
 	}
-	else if (list_len > 1 && (list_len & 1) == 1)
-	{ /* If there are more than 1 (odd number) nodes in the list */
+	else if ((list_len & 1) == 1)
+	{ /* If there's an odd number of nodes in the list */
 		right_idx = (list_len / 2) + 1;
 		left_idx = (list_len / 2) - 1;
 	}
