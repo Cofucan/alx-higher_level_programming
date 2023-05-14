@@ -18,7 +18,15 @@ int is_palindrome(listint_t **head)
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	/* return (check_palindrome_bruteforce(head)); */
+	/* If list has only 2 nodes */
+	if ((*head)->next->next == NULL)
+		return ((*head)->n == (*head)->next->n ? 1 : 0);
+
+	/* If list has only 3 nodes */
+	if ((*head)->next->next->next == NULL)
+		return ((*head)->n == (*head)->next->next->n ? 1 : 0);
+
+	/* If list has more than 3 nodes */
 	return (check_palindrome_reverse_half(head));
 }
 
@@ -48,7 +56,7 @@ int check_palindrome_reverse_half(listint_t **head)
 	slow = slow->next;
 	fast = *head;
 
-	while (slow->next)
+	while (slow)
 	{
 		if (fast->n != slow->n)
 			return (false);
