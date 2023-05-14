@@ -13,7 +13,6 @@ int is_palindrome(listint_t **head)
 {
 	int x, left_idx, right_idx, list_len = 0;
 	int *numbers;
-	long long int left_sum = 0, right_sum = 0;
 	listint_t *curr = *head;
 
 	/* If list is empty or has only one node */
@@ -27,6 +26,11 @@ int is_palindrome(listint_t **head)
 	if (!numbers)
 		return (0);
 
+	/* Copy over the integers from each node into the new array */
+	curr = *head;
+	for (x = 0; x < list_len; x++, curr = curr->next)
+		numbers[x] = curr->n;
+
 	if ((list_len & 1) == 0)
 	{ /* If there's an even number of nodes int the list */
 		right_idx = list_len / 2;
@@ -37,24 +41,6 @@ int is_palindrome(listint_t **head)
 		right_idx = (list_len / 2) + 1;
 		left_idx = (list_len / 2) - 1;
 	}
-
-	/* Copy over the integers from each node into the new array */
-	curr = *head;
-	for (x = 0; x < list_len; x++, curr = curr->next)
-	{
-		numbers[x] = curr->n;
-		if (x <= left_idx)
-			left_sum += numbers[x];
-		else if (x >= right_idx)
-			right_sum += numbers[x];
-	}
-
-	if (left_sum != right_sum)
-	{
-		free(numbers);
-		return (0);
-	}
-
 	for ( ; left_idx >= 0; left_idx--, right_idx++)
 		if (numbers[left_idx] != numbers[right_idx])
 		{
