@@ -50,7 +50,10 @@ int is_palindrome(listint_t **head)
 	}
 
 	if (left_sum != right_sum)
+	{
+		free(numbers);
 		return (0);
+	}
 
 	for ( ; left_idx >= 0; left_idx--, right_idx++)
 		if (numbers[left_idx] != numbers[right_idx])
