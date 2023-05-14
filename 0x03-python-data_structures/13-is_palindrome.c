@@ -1,5 +1,7 @@
 #include "lists.h"
 
+int get_list_len(listint_t **head);
+
 /**
  * is_palindrome - checks if a singly-linked list is a palindrome
  * @head: pointer to head of list
@@ -17,11 +19,7 @@ int is_palindrome(listint_t **head)
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	while (curr->next)
-	{ /* Get the length of the list */
-		list_len++;
-		curr = curr->next;
-	}
+	list_len = get_list_len(head);
 
 	/* Allocate an array to store the integers from the lists' nodes */
 	numbers = malloc(sizeof(int) * list_len);
@@ -45,8 +43,32 @@ int is_palindrome(listint_t **head)
 	}
 	for ( ; left_idx >= 0; left_idx--, right_idx++)
 		if (numbers[left_idx] != numbers[right_idx])
+		{
+			free(numbers);
 			return (0);
+		}
 
 	free(numbers);
 	return (1);
+}
+
+/**
+ * get_list_len - returns the length of a linked list
+ * @head: pointer to head of list
+ *
+ * Return: Integer, the length of the list.
+ */
+
+int get_list_len(listint_t **head)
+{
+	listint_t *curr = *head;
+	int list_len = 1;
+
+	while (curr->next)
+	{ /* Get the length of the list */
+		list_len++;
+		curr = curr->next;
+	}
+
+	return (list_len);
 }
