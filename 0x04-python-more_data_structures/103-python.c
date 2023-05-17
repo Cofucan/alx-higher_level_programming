@@ -10,7 +10,8 @@
  * Return: Nothing.
  */
 
-void print_python_list(PyObject *p) {
+void print_python_list(PyObject *p)
+{
 	Py_ssize_t size = 0;
 	Py_ssize_t allocated = 0;
 	Py_ssize_t i;
@@ -18,7 +19,8 @@ void print_python_list(PyObject *p) {
 	PyObject **items = NULL;
 	PyObject *item = NULL;
 
-	if (!PyList_Check(p)) {
+	if (!PyList_Check(p))
+	{
 		printf("[ERROR] Invalid Python List\n");
 		return;
 	}
@@ -31,7 +33,8 @@ void print_python_list(PyObject *p) {
 	printf("[*] Size of the Python List = %ld\n", size);
 	printf("[*] Allocated = %ld\n", allocated);
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < size; i++)
+	{
 		item = items[i];
 		printf("Element %ld: %s\n", i, item->ob_type->tp_name);
 	}
@@ -44,12 +47,14 @@ void print_python_list(PyObject *p) {
  * Return: Nothing.
  */
 
-void print_python_bytes(PyObject *p) {
+void print_python_bytes(PyObject *p)
+{
 	Py_ssize_t size = 0;
 	Py_ssize_t i;
 	char *bytes = NULL;
 
-	if (!PyBytes_Check(p)) {
+	if (!PyBytes_Check(p))
+	{
 		printf("[ERROR] Invalid Python Bytes object\n");
 		return;
 	}
