@@ -2,7 +2,7 @@
 
 def roman_to_int(roman_string):
     if type(roman_string) != str or roman_string is None:
-        return None
+        return 0
 
     numerals = {
             'I': 1,
@@ -15,7 +15,7 @@ def roman_to_int(roman_string):
             }
 
     if not any(c in numerals.keys() for c in roman_string):
-        return None
+        return 0
 
     rnum = numerals[roman_string[0]]
     for i, s in enumerate(roman_string[1:], 1):
