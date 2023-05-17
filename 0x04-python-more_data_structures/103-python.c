@@ -3,6 +3,9 @@
 #include "/usr/include/python3.4/object.h"
 #include <stdio.h>
 
+void print_python_list(PyObject *p);
+void print_python_bytes(PyObject *p);
+
 /**
  * print_python_list - prints information related to Python lists
  * @p: Pointer to the Python object.
