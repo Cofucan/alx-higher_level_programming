@@ -14,7 +14,7 @@ def roman_to_int(roman_string):
             'M': 1000,
             }
 
-    if not any(c in numerals.keys() for c in roman_string):
+    if all(c not in numerals for c in roman_string):
         return 0
 
     rnum = numerals[roman_string[0]]
