@@ -8,5 +8,6 @@ def square_matrix_simple(matrix=[]):
     # new_matrix = list(map(square_array, matrix.copy()))
     return new_matrix
 
+
 def square_array(arr):
     return [i**2 for i in arr]
