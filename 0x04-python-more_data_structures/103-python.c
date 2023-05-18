@@ -17,11 +17,11 @@ void print_python_list(PyObject *p)
 {
 	int i, size, alloc;
 	const char *type;
-	PyListObject *list = (PyListObject *)p;
-	PyVarObject *var = (PyVarObject *)p;
+	PyListObject *plist = (PyListObject *)p;
+	PyVarObject *pvar = (PyVarObject *)p;
 
-	size = var->ob_size;
-	alloc = list->allocated;
+	size = pvar->ob_size;
+	alloc = plist->allocated;
 
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %d\n", size);
@@ -29,10 +29,10 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		type = list->ob_item[i]->ob_type->tp_name;
+		type = plist->ob_item[i]->ob_type->tp_name;
 		printf("Element %d: %s\n", i, type);
-		if (strcmp(type, "bytes") == 0)
-			print_python_bytes(list->ob_item[i]);
+		if (!strcmp(type, "bytes"))
+			print_python_bytes(plist->ob_item[i]);
 	}
 }
 
