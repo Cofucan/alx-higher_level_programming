@@ -11,6 +11,6 @@ class Square:
         """Initialization of instance attributes.
 
         Args:
-            size (int): The size of the square per unit square.
+            size (int): The unit length of the square.
         """
         self.__size = size

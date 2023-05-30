@@ -11,7 +11,7 @@ class Square:
         """Initialization of instance attributes.
 
         Args:
-            size (int): The size of the square per unit square.
+            size (int): The unit length of the square.
         """
         if type(size) is not int:
             raise TypeError("size must be an integer")
