@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 """
     This module defines Square class with a private instance
-    attribute, including a default argument.
+    attribute, including a default argument and validation on
+    the data for the attribute.
+
+    It also includes a class method to get the area and a getter
+    function for the private attribute as well as a setter function.
 """
 
 
