@@ -96,10 +96,9 @@ class Square:
         Raises:
             TypeError: If data is not a tuple with 2 positive integers.
         """
-        if any((
-            type(data) is not tuple,
-            len(data) != 2,
-            any(x < 0 for x in data),
-            any(type(x) is not int for x in data)
-        )):
+        if \
+                type(data) is not tuple or \
+                any(type(x) is not int for x in data) or \
+                len(data) != 2 or \
+                any(x < 0 for x in data):
             raise TypeError("position must be a tuple of 2 positive integers")
