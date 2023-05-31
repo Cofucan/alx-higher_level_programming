@@ -13,11 +13,7 @@ class Square:
         Args:
             size (int): The unit length of the square.
         """
-        if type(size) is not int:
-            raise TypeError("size must be an integer")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
-
+        self._validate(size)
         self.__size = size
 
     @property
@@ -31,6 +27,19 @@ class Square:
 
         Args:
             value (int): The unit length of the square.
+        """
+        self._validate(value)
+        self.__size = value
+
+    def area(self):
+        """ Returns the current square area. """
+        return self.__size**2
+
+    def _validate(self, value):
+        """ Raises error is `value` is not valid.
+
+        Args:
+            value (int): Data to be validated.
 
         Raises:
             TypeError: If arg `value` is not an integer.
@@ -40,25 +49,3 @@ class Square:
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
-
-    def area(self):
-        """ Returns the current square area. """
-
-        return self.__size**2
-
-
-def validate(value):
-    """ Raises error is `value` is not valid.
-
-    Args:
-        value (int): The unit length of the square.
-
-    Raises:
-        TypeError: If arg `value` is not an integer.
-        ValueError: If arg `value` is negative.
-    """
-    if type(value) is not int:
-        raise TypeError("size must be an integer")
-    elif value < 0:
-        raise ValueError("size must be >= 0")
