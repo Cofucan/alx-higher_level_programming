@@ -106,7 +106,7 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
     PyFloatObject *py_copy = (PyFloatObject *)p;
-    float n = 0;
+    char *num_str = NULL;
 
     printf("[.] float object info\n");
 
@@ -117,14 +117,11 @@ void print_python_float(PyObject *p)
         return;
     }
 
-    /* Get the float value from the object */
-    n = py_copy->ob_fval;
-
-    /* Check if the float value is an integer */
-    if ((int)n == n)
-        printf("  value: %0.1f\n", py_copy->ob_fval);
-    else
-        printf("  value: %0.16g\n", py_copy->ob_fval);
+    /* Store the number as a string and print */
+	num_str = PyOS_double_to_string(py_copy->ob_fval, 'r', 0,
+			Py_DTSF_ADD_DOT_0, NULL);
+	printf("  value: %s\n", num_str);
+	PyMem_Free(num_str);
 
     fflush(stdout);
 }
