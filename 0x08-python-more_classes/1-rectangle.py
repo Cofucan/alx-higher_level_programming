@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" This module contains an empty class `Rectangle`. """
+"""
+    This module contains an empty class `Rectangle`.
+"""
 
 
 class Rectangle:
