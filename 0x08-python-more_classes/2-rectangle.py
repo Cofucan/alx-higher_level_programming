@@ -59,8 +59,8 @@ class Rectangle:
         """Computes and returns the area of the rectangle."""
         return self.height * self.width
 
-    def perimiter(self):
-        """Computes and returns the perimiter of the rectangle."""
-        if any(self.height == 0, self.width == 0):
+    def perimeter(self):
+        """Computes and returns the perimeter of the rectangle."""
+        if any((self.height == 0, self.width == 0)):
             return 0
         return 2*(self.height + self.width)
