@@ -12,8 +12,8 @@ class Rectangle:
             width (int, optional): Width of rectangle. Defaults to 0.
             height (int, optional): Height of rectangle. Defaults to 0.
         """
-        self.__validate_width(width)
-        self.__validate_height(height)
+        self.validate_width(width)
+        self.validate_height(height)
         self.width = width
         self.height = height
 
@@ -29,7 +29,7 @@ class Rectangle:
         Args:
             value (int): The new width to set.
         """
-        self.__validate_width(value)
+        self.validate_width(value)
         self.__width = value
 
     @property
@@ -44,10 +44,10 @@ class Rectangle:
         Args:
             value (int): The new height to set.
         """
-        self.__validate_height(value)
+        self.validate_height(value)
         self.__height = value
 
-    def __validate_width(self, width: int):
+    def validate_width(self, width: int):
         """ Private method for validating width.
 
         Args:
@@ -62,7 +62,7 @@ class Rectangle:
         elif width < 0:
             raise ValueError("width must be >= 0")
 
-    def __validate_height(self, height: int):
+    def validate_height(self, height: int):
         """ Private method for validating height.
 
         Args:
