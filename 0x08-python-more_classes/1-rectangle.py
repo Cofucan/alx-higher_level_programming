@@ -5,15 +5,13 @@
 class Rectangle:
     """ Definition of a Rectangle class. """
 
-    def __init__(self, width: int = 0, height: int = 0):
-        """ Init method for new objects.
+    def __init__(self, width=0, height=0):
+        """Initialize a rectangle with optional width and heigth.
 
         Args:
-            width (int, optional): Width of rectangle. Defaults to 0.
-            height (int, optional): Height of rectangle. Defaults to 0.
+            width (int): width of the rectangle
+            height (int): height of the rectangle
         """
-        self.__validate_width(width)
-        self.__validate_height(height)
         self.width = width
         self.height = height
 
