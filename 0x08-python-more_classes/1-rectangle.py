@@ -23,7 +23,7 @@ class Rectangle:
         return self.__width
 
     @width.setter
-    def width(self, value: int):
+    def width(self, value):
         """Setter function for private variable, width.
 
         Args:
@@ -38,7 +38,7 @@ class Rectangle:
         return self.__height
 
     @height.setter
-    def height(self, value: int):
+    def height(self, value):
         """Setter function for private variable, height.
 
         Args:
