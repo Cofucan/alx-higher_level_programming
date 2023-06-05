@@ -8,11 +8,11 @@ class Rectangle:
     """Representation of a Rectangle class"""
 
     def __init__(self, width=0, height=0):
-        """ Init method for new objects.
+        """Initialize a rectangle with optional width and heigth.
 
         Args:
-            width (int, optional): Width of rectangle. Defaults to 0.
-            height (int, optional): Height of rectangle. Defaults to 0.
+            width (int): width of the rectangle
+            height (int): height of the rectangle
         """
         self.width = width
         self.height = height
