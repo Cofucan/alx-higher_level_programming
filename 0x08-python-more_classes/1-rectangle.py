@@ -1,74 +1,78 @@
 #!/usr/bin/python3
-"""
-    Define a Rectangle class with width and height
-"""
+""" This module contains an empty class `Rectangle`. """
 
 
 class Rectangle:
-    """Representation of a Rectangle class"""
+    """ Definition of a Rectangle class. """
 
-    def __init__(self, width=0, height=0):
-        """Initialize a rectangle with optional width and heigth.
+    def __init__(self, width: int = 0, height: int = 0):
+        """ Innitialization method for new objects.
 
         Args:
-            width (int): width of the rectangle
-            height (int): height of the rectangle
+            width (int, optional): Width of rectangle. Defaults to 0.
+            height (int, optional): Height of rectangle. Defaults to 0.
         """
+        self.__validate_width(width)
+        self.__validate_height(height)
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """width property getter: retrieve the wdith of the class.
-
-        Returns:
-            width (int): the width instance attribute
-
-        width.setter: set the width of the class.
-        it also checks for TypeError and ValueError.
-
-        Args:
-            value (int): value to set the width to
-
-        Raises:
-            TypeError: if value is not an integer
-            ValueError: if value is less than 0.
-        """
+        """ Getter function for private variable, width """
         return self.__width
 
     @width.setter
-    def width(self, value):
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
+    def width(self, value: int):
+        """ Setter function for private variable, width.
+
+        Args:
+            value (int): The new width to set.
+        """
+        self.__validate_width(value)
+        self.__width = value
 
     @property
     def height(self):
-        """height property getter: retrieve the height of the class.
-
-        Returns:
-            height (int): the height instance attribute
-
-        height.setter: set the height of the class.
-        it also checks for TypeError and ValueError.
-
-        Args:
-            value (int): value to set the height to
-
-        Raises:
-            TypeError: if value is not an integer
-            ValueError: if value is less than 0.
-        """
+        """ Getter function for private variable, height """
         return self.__height
 
     @height.setter
-    def height(self, value):
-        if not isinstance(value, int):
+    def height(self, value: int):
+        """Setter function for private variable, height.
+
+        Args:
+            value (int): The new height to set.
+        """
+        self.__validate_height(value)
+        self.__height = value
+
+    def __validate_width(self, width: int):
+        """ Private method for validating width.
+
+        Args:
+            width (int): data to check
+
+        Raises:
+            TypeError: If width given is not an integer
+            ValueError: If width given is negative
+        """
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        elif width < 0:
+            raise ValueError("width must be >= 0")
+
+    def __validate_height(self, height: int):
+        """ Private method for validating height.
+
+        Args:
+            height (int): data to check
+
+        Raises:
+            TypeError: If width given is not an integer
+            ValueError: If width given is negative
+        """
+        if not isinstance(height, int):
             raise TypeError("height must be an integer")
-        elif value < 0:
-            raise ValueError("height must be >= 0")
-        else:
-            self.__height = value
+        elif height < 0:
+            raise ValueError("heigth must be >= 0")
