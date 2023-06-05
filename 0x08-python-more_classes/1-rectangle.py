@@ -5,15 +5,13 @@
 class Rectangle:
     """ Definition of a Rectangle class. """
 
-    def __init__(self, width: int = 0, height: int = 0):
+    def __init__(self, width=0, height=0):
         """ Innitialization method for new objects.
 
         Args:
             width (int, optional): Width of rectangle. Defaults to 0.
             height (int, optional): Height of rectangle. Defaults to 0.
         """
-        self.validate_width(width)
-        self.validate_height(height)
         self.width = width
         self.height = height
 
@@ -29,7 +27,7 @@ class Rectangle:
         Args:
             value (int): The new width to set.
         """
-        self.validate_width(value)
+        self.__validate_width(value)
         self.__width = value
 
     @property
@@ -44,10 +42,10 @@ class Rectangle:
         Args:
             value (int): The new height to set.
         """
-        self.validate_height(value)
+        self.__validate_height(value)
         self.__height = value
 
-    def validate_width(self, width: int):
+    def __validate_width(self, width: int):
         """ Private method for validating width.
 
         Args:
@@ -62,7 +60,7 @@ class Rectangle:
         elif width < 0:
             raise ValueError("width must be >= 0")
 
-    def validate_height(self, height: int):
+    def __validate_height(self, height: int):
         """ Private method for validating height.
 
         Args:
