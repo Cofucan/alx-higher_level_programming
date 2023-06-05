@@ -27,7 +27,10 @@ class Rectangle:
         Args:
             value (int): The new width to set.
         """
-        self.__validate_width(value)
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be >= 0")
         self.__width = value
 
     @property
@@ -42,35 +45,8 @@ class Rectangle:
         Args:
             value (int): The new height to set.
         """
-        self.__validate_height(value)
-        self.__height = value
-
-    def __validate_width(self, width: int):
-        """ Private method for validating width.
-
-        Args:
-            width (int): data to check
-
-        Raises:
-            TypeError: If width given is not an integer
-            ValueError: If width given is negative
-        """
-        if not isinstance(width, int):
-            raise TypeError("width must be an integer")
-        elif width < 0:
-            raise ValueError("width must be >= 0")
-
-    def __validate_height(self, height: int):
-        """ Private method for validating height.
-
-        Args:
-            height (int): data to check
-
-        Raises:
-            TypeError: If width given is not an integer
-            ValueError: If width given is negative
-        """
-        if not isinstance(height, int):
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        elif height < 0:
+        elif value < 0:
             raise ValueError("heigth must be >= 0")
+        self.__height = value
