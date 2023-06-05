@@ -17,14 +17,14 @@ class Rectangle:
         return self.__width
 
     @width.setter
-    def width(self, width: int):
+    def width(self, value: int):
         """ Setter function for private variable, width.
 
         Args:
-            width (int): The new width to set.
+            value (int): The new width to set.
         """
-        self._validate_width(width)
-        self._width = width
+        self._validate_width(value)
+        self.__width = value
 
     @property
     def height(self):
@@ -32,14 +32,14 @@ class Rectangle:
         return self.__height
 
     @height.setter
-    def height(self, height: int):
+    def height(self, value: int):
         """Setter function for private variable, height.
 
         Args:
-            height (int): The new height to set.
+            value (int): The new height to set.
         """
-        self._validate_height(height)
-        self.__height = height
+        self._validate_height(value)
+        self.__height = value
 
     def _validate_width(self, width):
         if not isinstance(width, int):
