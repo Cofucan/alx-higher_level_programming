@@ -1,0 +1,28 @@
+========================
+0. Integer addition
+========================
+
+
+Import module
+========================
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+
+Tests
+========================
+
+* Add 2 regular integer numbers
+
+    >>> add_integer(54, 1)
+    55
+
+
+* Pass a single integer argument
+
+    >>> add_integer(41)
+    139
+
+* Pass a single float argument
+
+    >>> add_integer(13.5)
+    111
