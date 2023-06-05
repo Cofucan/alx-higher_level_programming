@@ -6,8 +6,7 @@ class Rectangle:
     """ Definition of a Rectangle class. """
 
     def __init__(self, width: int = 0, height: int = 0):
-        self._validate_width(width)
-        self._validate_height(height)
+        """ Instantiation method for new object. """
         self.width = width
         self.height = height
 
