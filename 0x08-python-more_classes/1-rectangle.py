@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-""" This module contains an empty class `Rectangle`. """
+"""
+    This module contains an empty class `Rectangle`.
+"""
 
 
 class Rectangle:
-    """ Definition of a Rectangle class. """
+    """Definition of a Rectangle class."""
 
     def __init__(self, width=0, height=0):
         """Initialize a rectangle with optional width and heigth.
@@ -17,12 +19,12 @@ class Rectangle:
 
     @property
     def width(self):
-        """ Getter function for private variable, width """
+        """Getter function for private variable, width"""
         return self.__width
 
     @width.setter
     def width(self, value: int):
-        """ Setter function for private variable, width.
+        """Setter function for private variable, width.
 
         Args:
             value (int): The new width to set.
@@ -32,7 +34,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """ Getter function for private variable, height """
+        """Getter function for private variable, height"""
         return self.__height
 
     @height.setter
@@ -46,7 +48,7 @@ class Rectangle:
         self.__height = value
 
     def __validate_width(self, width: int):
-        """ Private method for validating width.
+        """Private method for validating width.
 
         Args:
             width (int): data to check
@@ -61,7 +63,7 @@ class Rectangle:
             raise ValueError("width must be >= 0")
 
     def __validate_height(self, height: int):
-        """ Private method for validating height.
+        """Private method for validating height.
 
         Args:
             height (int): data to check
