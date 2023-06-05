@@ -47,11 +47,11 @@ class Rectangle:
         self.__validate_height(value)
         self.__height = value
 
-    def __validate_width(self, width: int):
+    def __validate_width(self, width):
         """Private method for validating width.
 
         Args:
-            width (int): data to check
+            width: data to check
 
         Raises:
             TypeError: If width given is not an integer
@@ -62,11 +62,11 @@ class Rectangle:
         elif width < 0:
             raise ValueError("width must be >= 0")
 
-    def __validate_height(self, height: int):
+    def __validate_height(self, height):
         """Private method for validating height.
 
         Args:
-            height (int): data to check
+            height: data to check
 
         Raises:
             TypeError: If width given is not an integer
