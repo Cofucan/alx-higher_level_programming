@@ -81,4 +81,4 @@ class Rectangle:
         Returns:
             str: String representation of object that can be used with eval()
         """
-        return f"Rectangle ({self.width}, {self.height})"
+        return f"Rectangle({self.width}, {self.height})"
