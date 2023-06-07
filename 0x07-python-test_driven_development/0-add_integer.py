@@ -4,7 +4,7 @@
 """
 
 
-def add_integer(a: int | float, b: int | float = 98) -> int:
+def add_integer(a, b=98) -> int:
     """ Computes and returns the sum of 2 integers.
 
     Args:
