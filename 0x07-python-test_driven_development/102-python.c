@@ -30,7 +30,7 @@ void print_python_string(PyObject *p)
 
 	for (u = 0; u < len; u++)
 	{
-		if (str[i] < 0)
+		if (str[u] < 0)
 		{
 			encoding = unicode;
 			break;
