@@ -22,7 +22,14 @@ Tests
     ...
     Exception: area() is not implemented
 
-* Call the area() method with arguments
+* Call the area() method with 1 arguments
+
+    >>> bg.area(9)
+    Traceback (most recent call last):
+    ...
+    TypeError: area() takes 1 positional argument but 2 were given
+
+* Call the area() method with 2 arguments
 
     >>> bg.area(45, 9)
     Traceback (most recent call last):
@@ -40,8 +47,10 @@ Tests
     >>> bg.integer_validator(['a'], 89)
     >>> bg.integer_validator({5}, 89)
     >>> bg.integer_validator(11.56, 89)
+    >>> bg.integer_validator(None, 89)
+    >>> bg.integer_validator({'k': 'v'}, 89)
 
-* Calling the integer_validator() method with `str` as second argument
+* Calling the integer_validator() method with a string as second argument
 
     >>> bg.integer_validator('game', "data")
     Traceback (most recent call last):
@@ -93,6 +102,20 @@ Tests
 * Calling the integer_validator() method with negative infinity as second argument
 
     >>> bg.integer_validator('echo', '-inf')
+    Traceback (most recent call last):
+    ...
+    TypeError: echo must be an integer
+
+* Calling the integer_validator() method with positive float infinity as second argument
+
+    >>> bg.integer_validator('delta', float('inf'))
+    Traceback (most recent call last):
+    ...
+    TypeError: delta must be an integer
+
+* Calling the integer_validator() method with negative float infinity as second argument
+
+    >>> bg.integer_validator('echo', float('-inf'))
     Traceback (most recent call last):
     ...
     TypeError: echo must be an integer
