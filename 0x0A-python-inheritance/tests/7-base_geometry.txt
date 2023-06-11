@@ -22,6 +22,13 @@ Tests
     ...
     Exception: area() is not implemented
 
+* Call the area() method with arguments
+
+    >>> bg.area(45, 9)
+    Traceback (most recent call last):
+    ...
+    TypeError: area() takes 1 positional argument but 3 were given
+
 * Call the integer_validator() method with valid arguments
 
     >>> bg.integer_validator("my_int", 12)
