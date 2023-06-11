@@ -90,6 +90,20 @@ Tests
     ...
     TypeError: echo must be an integer
 
+* Calling the integer_validator() method with a infinite float value
+
+    >>> bg.integer_validator("inf", 1e500)
+    Traceback (most recent call last):
+    ...
+    TypeError: inf must be an integer
+
+* Calling the integer_validator() method with NaN as second argument
+
+    >>> bg.integer_validator("nan", float("nan"))
+    Traceback (most recent call last):
+    ...
+    TypeError: nan must be an integer
+
 * Calling the integer_validator() method with `tuple` as second argument
 
     >>> bg.integer_validator('fox', ("text", 77, ))
@@ -107,6 +121,13 @@ Tests
 * Calling the integer_validator() method with `Boolean` as second argument
 
     >>> bg.integer_validator('kilo', True)
+
+* Calling the integer_validator() method with `object` as second argument
+
+    >>> bg.integer_validator('object', object)
+    Traceback (most recent call last):
+    ...
+    TypeError: object must be an integer
 
 * Calling the integer_validator() method with no arguments
 
