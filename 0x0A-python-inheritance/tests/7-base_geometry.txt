@@ -41,6 +41,13 @@ Tests
     ...
     TypeError: name must be an integer
 
+* Calling the integer_validator() method with negative float as second argument
+
+    >>> bg.integer_validator('golf', -308.4456)
+    Traceback (most recent call last):
+    ...
+    TypeError: golf must be an integer
+
 * Calling the integer_validator() method with `list` as second argument
 
     >>> bg.integer_validator('alpha', ["abc", 32])
@@ -83,12 +90,16 @@ Tests
     ...
     TypeError: fox must be an integer
 
-* Calling the integer_validator() method with negative float as second argument
+* Calling the integer_validator() method with `None` as second argument
 
-    >>> bg.integer_validator('golf', -308.4456)
+    >>> bg.integer_validator('india', None)
     Traceback (most recent call last):
     ...
-    TypeError: golf must be an integer
+    TypeError: india must be an integer
+
+* Calling the integer_validator() method with `Boolean` as second argument
+
+    >>> bg.integer_validator('kilo', True)
 
 * Calling the integer_validator() method with no arguments
 
