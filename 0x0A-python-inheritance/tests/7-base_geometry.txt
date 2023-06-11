@@ -55,6 +55,62 @@ Tests
     ...
     TypeError: bravo must be an integer
 
+* Calling the integer_validator() method with `dictionary` as second argument
+
+    >>> bg.integer_validator('charlie', {"name": "Charlie", "id": 2012245})
+    Traceback (most recent call last):
+    ...
+    TypeError: charlie must be an integer
+
+* Calling the integer_validator() method with positive infinity as second argument
+
+    >>> bg.integer_validator('delta', 'inf')
+    Traceback (most recent call last):
+    ...
+    TypeError: delta must be an integer
+
+* Calling the integer_validator() method with negative infinity as second argument
+
+    >>> bg.integer_validator('echo', '-inf')
+    Traceback (most recent call last):
+    ...
+    TypeError: echo must be an integer
+
+* Calling the integer_validator() method with `tuple` as second argument
+
+    >>> bg.integer_validator('fox', ("text", 77, ))
+    Traceback (most recent call last):
+    ...
+    TypeError: fox must be an integer
+
+* Calling the integer_validator() method with negative float as second argument
+
+    >>> bg.integer_validator('golf', -308.4456)
+    Traceback (most recent call last):
+    ...
+    TypeError: golf must be an integer
+
+* Calling the integer_validator() method with no arguments
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+* Calling the integer_validator() method with one argument
+
+    >>> bg.integer_validator("india")
+    Traceback (most recent call last):
+    ...
+    TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+* Calling the integer_validator() method with more than two arguments
+
+    >>> bg.integer_validator("india", 11, -3)
+    Traceback (most recent call last):
+    ...
+    TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+
 * Calling the integer_validator() method with negative integer as second argument
 
     >>> bg.integer_validator('key', -31)
