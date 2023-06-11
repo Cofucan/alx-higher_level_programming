@@ -41,6 +41,13 @@ Tests
     >>> bg.integer_validator({5}, 89)
     >>> bg.integer_validator(11.56, 89)
 
+* Calling the integer_validator() method with `str` as second argument
+
+    >>> bg.integer_validator('game', "data")
+    Traceback (most recent call last):
+    ...
+    TypeError: game must be an integer
+
 * Calling the integer_validator() method with `float` as second argument
 
     >>> bg.integer_validator('name', 45.1827)
