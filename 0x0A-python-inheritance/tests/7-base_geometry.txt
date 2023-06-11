@@ -27,35 +27,42 @@ Tests
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
 
-* Call the integer_validator() method with different data types in the first argument
+* Call the integer_validator() method with different data types in the first as argument
 
     >>> bg.integer_validator(16, 2)
     >>> bg.integer_validator(['a'], 89)
     >>> bg.integer_validator({5}, 89)
     >>> bg.integer_validator(11.56, 89)
 
-* Calling the integer_validator() method with `float` second argument
+* Calling the integer_validator() method with `float` as second argument
 
     >>> bg.integer_validator('name', 45.1827)
     Traceback (most recent call last):
     ...
     TypeError: name must be an integer
 
-* Calling the integer_validator() method with `list` second argument
+* Calling the integer_validator() method with `list` as second argument
 
     >>> bg.integer_validator('alpha', ["abc", 32])
     Traceback (most recent call last):
     ...
     TypeError: alpha must be an integer
 
-* Calling the integer_validator() method with negative integer second argument
+* Calling the integer_validator() method with `set` as second argument
+
+    >>> bg.integer_validator('bravo', {34, 'd', "base"})
+    Traceback (most recent call last):
+    ...
+    TypeError: bravo must be an integer
+
+* Calling the integer_validator() method with negative integer as second argument
 
     >>> bg.integer_validator('key', -31)
     Traceback (most recent call last):
     ...
     ValueError: key must be greater than 0
 
-* Calling the integer_validator() method with 0 in second argument
+* Calling the integer_validator() method with 0 as second argument
 
     >>> bg.integer_validator('amount', 0)
     Traceback (most recent call last):
