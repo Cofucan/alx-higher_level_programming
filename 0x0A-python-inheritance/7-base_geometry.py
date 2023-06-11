@@ -4,6 +4,7 @@
 
 class BaseGeometry:
     """Defines a BaseGeometry class."""
+
     def area(self):
         """Computes the area of the geometry.
 
@@ -12,7 +13,7 @@ class BaseGeometry:
         """
         raise Exception("area() is not implemented")
 
-    def integer_validator(self, name: str, value: int):
+    def integer_validator(self, name, value):
         """Validates `value`.
 
         Args:
