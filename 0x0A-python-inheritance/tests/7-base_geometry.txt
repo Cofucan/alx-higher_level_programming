@@ -1,0 +1,56 @@
+========================
+Base Geometry
+========================
+
+
+Import module
+========================
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+Tests
+========================
+
+* Create new instance
+
+    >>> bg = BaseGeometry()
+
+* Call the area() method
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+* Call the integer_validator() method with valid arguments
+
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+
+* Call the integer_validator() method with different data types in the first argument
+
+    >>> bg.integer_validator(16, 2)
+    >>> bg.integer_validator(['a'], 89)
+    >>> bg.integer_validator({5}, 89)
+    >>> bg.integer_validator(11.56, 89)
+
+* Calling the integer_validator() method with `float` second argument
+
+    >>> bg.integer_validator('name', 45.1827)
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+
+* Calling the integer_validator() method with negative integer second argument
+
+    >>> bg.integer_validator('name', -31)
+    Traceback (most recent call last):
+    ...
+    ValueError: name must be greater than 0
+
+* Calling the integer_validator() method with 0 in second argument
+
+    >>> bg.integer_validator('name', 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: name must be greater than 0
