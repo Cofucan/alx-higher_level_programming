@@ -151,6 +151,9 @@ Tests
 * Calling the integer_validator() method with `Boolean` as second argument
 
     >>> bg.integer_validator('kilo', True)
+    Traceback (most recent call last):
+    ...
+    TypeError: kilo must be an integer
 
 * Calling the integer_validator() method with `object` as second argument
 
