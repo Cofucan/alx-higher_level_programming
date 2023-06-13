@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Read-File Module"""
+"""Reads and prints the contents of a text file."""
 
 
 def read_file(filename=""):
