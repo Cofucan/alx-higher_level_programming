@@ -1,16 +1,7 @@
 #!/usr/bin/python3
+"""Log Parsing Module."""
 import sys
 import contextlib
-
-"""
-    Log Parsing Module.
-
-    Reads stdin line by line and computes metrics.
-    After every ten lines and a keyboard interruption (Ctrl-C),
-    prints the following statistics:
-        * Total file size up to that point
-        * Number of lines by status code
-"""
 
 
 def print_stats(size: int, status_codes: dict):
@@ -52,6 +43,6 @@ if __name__ == "__main__":
                         status_codes[line[-2]] += 1
         print_stats(size, status_codes)
 
-    except KeyboardInterrupt:
+    except KeyboardInterrupt as k:
         print_stats(size, status_codes)
-        raise
+        raise k
