@@ -52,6 +52,6 @@ if __name__ == "__main__":
                         status_codes[line[-2]] += 1
         print_stats(size, status_codes)
 
-    except KeyboardInterrupt as k:
+    except KeyboardInterrupt:
         print_stats(size, status_codes)
-        raise k
+        raise
