@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     if os.path.isfile(filename):
         from_file = list(load_from_json_file(filename))
-        from_file.extend(args)
     else:
         from_file = []
 
+    from_file.extend(args)
     save_to_json_file(from_file, filename)
