@@ -3,7 +3,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    def __init__(self, width, height, x=0, y=0, id=None):
+    def __init__(self, width: int, height: int, x=0, y=0, id=None):
         super().__init__(id)
         self._validate_attr(width, "width")
         self._validate_attr(height, "height")
@@ -67,9 +67,12 @@ class Rectangle(Base):
             err_msg = f"{name} must be >= 0"
             raise ValueError(err_msg)
 
-    def area(self):
+    def area(self) -> int:
         return self.__height * self.__width
 
     def display(self):
         for _ in range(self.__height):
             print("#" * self.__width)
+
+    def __str__(self) -> str:
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
