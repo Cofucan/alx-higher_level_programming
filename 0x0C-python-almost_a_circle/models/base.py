@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+    Base Module
+"""
 
 
 class Base():

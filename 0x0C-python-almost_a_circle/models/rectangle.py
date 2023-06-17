@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+    Rectangle Module
+"""
 from models.base import Base
 
 
@@ -59,7 +62,7 @@ class Rectangle(Base):
             err_msg = f"{name} must be an integer"
             raise TypeError(err_msg)
 
-        if name in {"width", "height"} and value <= 0:
+        if name in {"width", "height", "size"} and value <= 0:
             err_msg = f"{name} must be > 0"
             raise ValueError(err_msg)
 
