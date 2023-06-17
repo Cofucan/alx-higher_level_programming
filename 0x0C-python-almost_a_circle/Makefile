@@ -1,5 +1,5 @@
 exec:
-	chmod +x *.py
+	chmod +x *.py models/*.py tests/test_models/*.py
 
 pycode:
 	pycodestyle *.py
