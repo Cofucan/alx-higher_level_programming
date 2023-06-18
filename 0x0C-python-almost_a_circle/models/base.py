@@ -28,12 +28,12 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         filename = f"{cls.__name__}.json"
-        with open(filename, mode="w", encoding="utf-8") as s:
+        with open(filename, mode="w", encoding="utf-8") as json_file:
             if not list_objs:
-                s.write(cls.to_json_string([]))
+                json_file.write(cls.to_json_string([]))
             else:
                 dict_objs = [obj.to_dictionary() for obj in list_objs]
-                s.write(cls.to_json_string(dict_objs))
+                json_file.write(cls.to_json_string(dict_objs))
 
     @classmethod
     def create(cls, **dictionary):
@@ -52,8 +52,8 @@ class Base:
         if not os.path.isfile(filename):
             return []
 
-        with open(filename, mode="r", encoding="utf-8") as s:
-            instances = cls.from_json_string(s.read())
+        with open(filename, mode="r", encoding="utf-8") as json_file:
+            instances = cls.from_json_string(json_file.read())
 
         return [cls.create(**instance) for instance in instances]
 
