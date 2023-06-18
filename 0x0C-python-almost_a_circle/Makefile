@@ -4,11 +4,22 @@ exec:
 pycode:
 	pycodestyle *.py
 
-test_all:
+quicktest_all:
+	for f in $$(seq 1 18); do \
+		echo "############################## Quick testing $${f}-main.py ##############################"; \
+		"./$${f}-main.py"; \
+	done
+	echo "############################## Quick testing 100-main.py ##############################";
+	./100-main.py;
+
+unittest_all:
 	python3 -m unittest discover tests
 
-test_base:
+unittest_base:
 	python3 -m unittest tests/test_models/test_base.py
 
-test_rectangle:
+unittest_rectangle:
 	python3 -m unittest tests/test_models/test_rectangle.py
+
+clean:
+	rm *.json *.csv
