@@ -3,6 +3,7 @@
     Base Module
 """
 import json
+import os
 
 
 class Base():
@@ -43,3 +44,12 @@ class Base():
 
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        filename = f"{cls.__name__}.json"
+        if not os.path.isfile(filename):
+            return []
+        with open(filename, mode="r", encoding="utf-8") as s:
+            inst = s.read()
+        # inst
