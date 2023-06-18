@@ -19,6 +19,10 @@ class Base():
     def to_json_string(list_dictionaries) -> str:
         return json.dumps(list_dictionaries) if list_dictionaries else "[]"
 
+    @staticmethod
+    def from_json_string(json_string) -> list:
+        return json.loads(json_string) if json_string else []
+
     @classmethod
     def save_to_file(cls, list_objs):
         filename = f"{cls.__name__}.json"
