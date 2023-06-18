@@ -50,6 +50,8 @@ class Base():
         filename = f"{cls.__name__}.json"
         if not os.path.isfile(filename):
             return []
+
         with open(filename, mode="r", encoding="utf-8") as s:
-            inst = s.read()
-        # inst
+            instances = cls.from_json_string(s.read())
+
+        return [cls.create(**instance) for instance in instances]
