@@ -32,3 +32,14 @@ class Base():
             else:
                 dict_objs = [obj.to_dictionary() for obj in list_objs]
                 s.write(cls.to_json_string(dict_objs))
+
+    @classmethod
+    def create(cls, **dictionary):
+        if cls.__name__ == "Rectangle":
+            dummy = cls(8, 4)
+
+        if cls.__name__ == "Square":
+            dummy = cls(7)
+
+        dummy.update(**dictionary)
+        return dummy
