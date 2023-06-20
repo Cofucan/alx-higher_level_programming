@@ -2,7 +2,7 @@ exec:
 	chmod +x *.py models/*.py tests/test_models/*.py
 
 pycode:
-	pycodestyle *.py
+	pycodestyle models/*.py tests/test_models/*.py
 
 quicktest_all:
 	for f in $$(seq 1 18); do \
