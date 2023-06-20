@@ -173,13 +173,16 @@ class Rectangle(Base):
             **kwargs: The keyword arguments can be used to update any
                    attribute by specifying the attribute name.
         """
-        if args:
-            attrs = ("id", "width", "height", "x", "y")
-            for idx, arg in enumerate(args):
-                setattr(self, attrs[idx], arg)
-        else:
-            for key, value in kwargs.items():
-                setattr(self, key, value)
+        try:
+            if args:
+                attrs = ("id", "width", "height", "x", "y")
+                for idx, arg in enumerate(args):
+                    setattr(self, attrs[idx], arg)
+            else:
+                for key, value in kwargs.items():
+                    setattr(self, key, value)
+        except (IndexError, AttributeError):
+            return
 
     def __str__(self) -> str:
         """

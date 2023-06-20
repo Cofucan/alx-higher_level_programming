@@ -56,13 +56,16 @@ class Square(Rectangle):
             *args: A list of attributes to update.
             **kwargs: A dictionary of attributes to update.
         """
-        if args:
-            attrs = ["id", "size", "x", "y"]
-            for x, arg in enumerate(args):
-                setattr(self, attrs[x], arg)
-        else:
-            for key, value in kwargs.items():
-                setattr(self, key, value)
+        try:
+            if args:
+                attrs = ["id", "size", "x", "y"]
+                for x, arg in enumerate(args):
+                    setattr(self, attrs[x], arg)
+            else:
+                for key, value in kwargs.items():
+                    setattr(self, key, value)
+        except (IndexError, AttributeError):
+            return
 
     def to_dictionary(self):
         """
