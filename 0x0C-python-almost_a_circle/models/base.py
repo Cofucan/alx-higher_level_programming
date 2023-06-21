@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/python3
 """
     Base Module
@@ -69,11 +70,7 @@ class Base:
         Returns:
             object: An instance of a class that inherits from this class.
         """
-        dummy_dict = {'Rectangle': cls(8, 4), 'Square': cls(7)}
-        dummy = dummy_dict[cls.__name__]
-
-        dummy.update(**dictionary)
-        return dummy
+        return cls(**dictionary)
 
     @classmethod
     def load_from_file(cls) -> list:
@@ -83,7 +80,7 @@ class Base:
             list: A list of instances created using the read data.
         """
         filename = f"{cls.__name__}.json"
-        if not os.path.isfile(filename):
+        if not Path(filename).is_file():
             return []
 
         with open(filename, mode="r", encoding="utf-8") as json_file:
@@ -117,7 +114,7 @@ class Base:
         """
         filename = f"{cls.__name__}.csv"
 
-        if not os.path.isfile(filename):
+        if not Path(filename).is_file():
             return []
 
         with open(filename, mode="r", encoding="utf-8") as csv_file:
