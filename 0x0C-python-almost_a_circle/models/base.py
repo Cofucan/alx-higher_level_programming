@@ -10,6 +10,7 @@ import os
 
 class Base:
     """Base class which will be inherited by all other classes."""
+
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -127,8 +128,10 @@ class Base:
                     columns = ["id", "size", "x", "y"]
 
                 reader = csv.DictReader(csv_file, columns)
-                reader = [{key: int(value) for key, value in row.items()}
-                          for row in reader]
+                reader = [
+                    {key: int(value) for key, value in row.items()}
+                    for row in reader
+                ]
                 return [cls.create(**(args)) for args in reader]
         except IOError:
             return []
