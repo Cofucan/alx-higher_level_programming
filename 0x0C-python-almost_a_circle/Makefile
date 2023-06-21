@@ -21,5 +21,8 @@ unittest_base:
 unittest_rectangle:
 	python3 -m unittest tests/test_models/test_rectangle.py
 
+unittest_square:
+	python3 -m unittest tests/test_models/test_square.py
+
 clean:
 	rm *.json *.csv
