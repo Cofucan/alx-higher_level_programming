@@ -1,12 +1,12 @@
-from pathlib import Path
 #!/usr/bin/python3
 """
     Base Module
 """
+
 import csv
 import json
 import turtle
-import os
+from pathlib import Path
 
 
 class Base:
@@ -137,56 +137,56 @@ class Base:
         """
         with turtle.Screen() as screen:
             screen.setup(1200, 720)
-            t = turtle.Turtle()
+            t_obj = turtle.Turtle()
 
             total_height = 0
 
             if list_rectangles:
                 rec_width = list_rectangles[0].width * 2
                 rec_height = list_rectangles[0].height * 2
-                t.begin_fill()
-                t.color("pink", "purple")
-                t.forward(rec_width)
-                t.left(90)
-                t.forward(rec_height)
-                t.left(90)
-                t.forward(rec_width)
-                t.left(90)
-                t.forward(rec_height)
-                t.end_fill()
+                t_obj.begin_fill()
+                t_obj.color("pink", "purple")
+                t_obj.forward(rec_width)
+                t_obj.left(90)
+                t_obj.forward(rec_height)
+                t_obj.left(90)
+                t_obj.forward(rec_width)
+                t_obj.left(90)
+                t_obj.forward(rec_height)
+                t_obj.end_fill()
                 total_height += rec_height
 
             if len(list_rectangles) > 1:
                 for rec in list_rectangles[1:]:
                     rec_h = rec.height * 2
                     rec_w = rec.width * 2
-                    t.forward(rec_h)
-                    t.left(90)
+                    t_obj.forward(rec_h)
+                    t_obj.left(90)
 
-                    t.begin_fill()
-                    t.color("pink", "purple")
-                    t.forward(rec_w)
-                    t.left(90)
-                    t.forward(rec_h)
-                    t.left(90)
-                    t.forward(rec_w)
-                    t.left(90)
-                    t.forward(rec_h)
-                    t.end_fill()
+                    t_obj.begin_fill()
+                    t_obj.color("pink", "purple")
+                    t_obj.forward(rec_w)
+                    t_obj.left(90)
+                    t_obj.forward(rec_h)
+                    t_obj.left(90)
+                    t_obj.forward(rec_w)
+                    t_obj.left(90)
+                    t_obj.forward(rec_h)
+                    t_obj.end_fill()
                     total_height += rec_h
 
             for sqr in list_squares:
                 sqr_size = sqr.width * 2
-                t.right(180)
-                t.forward(total_height)
-                t.left(90)
-                t.forward(50)
+                t_obj.right(180)
+                t_obj.forward(total_height)
+                t_obj.left(90)
+                t_obj.forward(50)
 
-                t.begin_fill()
-                t.color("#39E745", "#39E745")
+                t_obj.begin_fill()
+                t_obj.color("#39E745", "#39E745")
                 for _ in range(4):
-                    t.forward(sqr_size)
-                    t.left(90)
-                t.end_fill()
+                    t_obj.forward(sqr_size)
+                    t_obj.left(90)
+                t_obj.end_fill()
 
             turtle.done()
