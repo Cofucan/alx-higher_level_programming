@@ -31,11 +31,10 @@ class TestBase(unittest.TestCase):
 
     def test_base_4_to_json_string(self):
         """Test the to_json_string method of Base."""
-        base = Base()
-        self.assertEqual(base.to_json_string([]), "[]")
-        ld1 = base.to_json_string([{'id': 21, 'name': 'json'}])
+        self.assertEqual(Base.to_json_string([]), "[]")
+        ld1 = Base.to_json_string([{'id': 21, 'name': 'json'}])
         self.assertEqual(ld1, '[{"id": 21, "name": "json"}]')
-        ld2 = base.to_json_string([{'id': 21, 'name': 'json'},
+        ld2 = Base.to_json_string([{'id': 21, 'name': 'json'},
                                    {'age': 25, 'class': 4}])
         self.assertEqual(ld2, '[{"id": 21, "name": "json"}, '
                          '{"age": 25, "class": 4}]')
@@ -43,12 +42,11 @@ class TestBase(unittest.TestCase):
 
     def test_base_5_from_json_string(self):
         """Test the from_json_string method of Base."""
-        base = Base()
-        self.assertEqual(base.from_json_string(None), [])
-        self.assertEqual(base.from_json_string("[]"), [])
-        ld1 = base.from_json_string('[{"id": 21, "name": "json"}]')
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        ld1 = Base.from_json_string('[{"id": 21, "name": "json"}]')
         self.assertEqual(ld1, [{'id': 21, 'name': 'json'}])
-        ld2 = base.from_json_string('[{"id": 21, "name": "json"}, '
+        ld2 = Base.from_json_string('[{"id": 21, "name": "json"}, '
                                     '{"age": 25, "class": 4}]')
         self.assertEqual(ld2, [{'id': 21, 'name': 'json'},
                                {'age': 25, 'class': 4}])
