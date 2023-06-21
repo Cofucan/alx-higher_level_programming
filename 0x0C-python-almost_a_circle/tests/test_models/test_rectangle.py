@@ -915,9 +915,9 @@ class TestRectangleToDictionary(unittest.TestCase):
         Test if the to_dictionary method does not modify the original
         object.
         """
-        self.rect_a = Rectangle(5, 9, 1, 2, 10)
-        self.rect_a.update(**self.rect.to_dictionary())
-        self.assertNotEqual(self.rect, self.rect_a)
+        rect_a = Rectangle(5, 9, 1, 2, 10)
+        rect_a.update(**self.rect.to_dictionary())
+        self.assertNotEqual(self.rect, rect_a)
 
     def test_to_dictionary_with_argument(self):
         """
@@ -926,6 +926,24 @@ class TestRectangleToDictionary(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             self.rect.to_dictionary(1)
+
+
+class TestCreate(unittest.TestCase):
+    """
+    Unit tests for testing the create method of the Rectangle class
+    inherited from the Base class.
+    """
+
+    def test_rectangle_create(self):
+        """
+        Test if the create method returns a new Rectangle instance.
+        """
+        rect = Rectangle.create(**{'id': 89, 'width': 1})
+        self.assertIsInstance(rect, Rectangle)
+        rect = Rectangle.create(**{'id': 24, 'width': 25, 'height': 11})
+        self.assertEqual(rect.id, 24)
+        self.assertEqual(rect.width, 25)
+        self.assertEqual(rect.height, 11)
 
 
 if __name__ == "__main__":
