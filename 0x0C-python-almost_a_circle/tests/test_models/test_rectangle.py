@@ -141,7 +141,7 @@ class TestRectangleInstantiation(unittest.TestCase):
 class TestRectangleWidth(unittest.TestCase):
     """Unittests for testing initialization of Rectangle width attribute."""
 
-    def test_None_width(self):
+    def test_none_width(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(None, 2)
@@ -184,7 +184,7 @@ class TestRectangleWidth(unittest.TestCase):
     def test_frozenset_width(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(frozenset({1, 2, 3, 1}), 2)
+            Rectangle(frozenset({1, 2, 3}), 2)
 
     def test_range_width(self):
         """..."""
@@ -230,7 +230,7 @@ class TestRectangleWidth(unittest.TestCase):
 class TestRectangleHeight(unittest.TestCase):
     """Unittests for testing initialization of Rectangle height attribute."""
 
-    def test_None_height(self):
+    def test_none_height(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(1, None)
@@ -273,7 +273,7 @@ class TestRectangleHeight(unittest.TestCase):
     def test_frozenset_height(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, frozenset({1, 2, 3, 1}))
+            Rectangle(1, frozenset({1, 2, 3}))
 
     def test_range_height(self):
         """..."""
@@ -319,7 +319,7 @@ class TestRectangleHeight(unittest.TestCase):
 class TestRectangleX(unittest.TestCase):
     """Unittests for testing initialization of Rectangle x attribute."""
 
-    def test_None_x(self):
+    def test_none_x(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(1, 2, None)
@@ -362,7 +362,7 @@ class TestRectangleX(unittest.TestCase):
     def test_frozenset_x(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, frozenset({1, 2, 3, 1}))
+            Rectangle(1, 2, frozenset({1, 2, 3}))
 
     def test_range_x(self):
         """..."""
@@ -403,7 +403,7 @@ class TestRectangleX(unittest.TestCase):
 class TestRectangleY(unittest.TestCase):
     """Unittests for testing initialization of Rectangle y attribute."""
 
-    def test_None_y(self):
+    def test_none_y(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(1, 2, 3, None)
@@ -446,7 +446,7 @@ class TestRectangleY(unittest.TestCase):
     def test_frozenset_y(self):
         """..."""
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 3, frozenset({1, 2, 3, 1}))
+            Rectangle(1, 2, 3, frozenset({1, 2, 3}))
 
     def test_range_y(self):
         """..."""
@@ -609,7 +609,6 @@ class TestRectangleSTDOUT(unittest.TestCase):
     # Test display method
     def test_display_width_height(self):
         """..."""
-        """..."""
         r = Rectangle(2, 3, 0, 0, 0)
         capture = TestRectangleSTDOUT.read_stdout(r, "display")
         self.assertEqual("##\n##\n##\n", capture.getvalue())
@@ -678,13 +677,13 @@ class TestRectangleUpdateArgs(unittest.TestCase):
         self.rectangle.update(89, 2, 3, 4, 5)
         self.assertEqual("[Rectangle] (89) 4/5 - 2/3", str(self.rectangle))
 
-    def test_update_args_None_id(self):
+    def test_update_args_none_id(self):
         """Test update with None value for id."""
         self.rectangle.update(None)
         correct = f"[Rectangle] ({self.rectangle.id}) 10/10 - 10/10"
         self.assertEqual(correct, str(self.rectangle))
 
-    def test_update_args_None_id_and_more(self):
+    def test_update_args_none_id_and_more(self):
         """Test update with None value for id and additional arguments."""
         self.rectangle.update(None, 4, 5, 2)
         correct = f"[Rectangle] ({self.rectangle.id}) 2/10 - 4/5"
@@ -811,16 +810,16 @@ class TestRectangleUpdateKwargs(unittest.TestCase):
         self.rectangle.update(y=5, x=8, id=99, width=1, height=2)
         self.assertEqual("[Rectangle] (99) 8/5 - 1/2", str(self.rectangle))
 
-    def test_update_kwargs_None_id(self):
+    def test_update_kwargs_none_id(self):
         """Test update with None value for id."""
         self.rectangle.update(id=None)
-        correct = "[Rectangle] ({}) 10/10 - 10/10".format(self.rectangle.id)
+        correct = f"[Rectangle] ({self.rectangle.id}) 10/10 - 10/10"
         self.assertEqual(correct, str(self.rectangle))
 
-    def test_update_kwargs_None_id_and_more(self):
+    def test_update_kwargs_none_id_and_more(self):
         """Test update with None value for id and other keyword arguments."""
         self.rectangle.update(id=None, height=7, y=9)
-        correct = "[Rectangle] ({}) 10/9 - 10/7".format(self.rectangle.id)
+        correct = f"[Rectangle] ({self.rectangle.id}) 10/9 - 10/7"
         self.assertEqual(correct, str(self.rectangle))
 
     def test_update_kwargs_twice(self):
