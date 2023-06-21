@@ -69,11 +69,8 @@ class Base:
         Returns:
             object: An instance of a class that inherits from this class.
         """
-        if cls.__name__ == "Rectangle":
-            dummy = cls(8, 4)
-
-        if cls.__name__ == "Square":
-            dummy = cls(7)
+        dummy_dict = {'Rectangle': cls(8, 4), 'Square': cls(7)}
+        dummy = dummy_dict[cls.__name__]
 
         dummy.update(**dictionary)
         return dummy
@@ -120,79 +117,79 @@ class Base:
         """
         filename = f"{cls.__name__}.csv"
 
-        try:
-            with open(filename, mode="r", encoding="utf-8") as csv_file:
-                if cls.__name__ == "Rectangle":
-                    columns = ["id", "width", "height", "x", "y"]
-                else:
-                    columns = ["id", "size", "x", "y"]
-
-                reader = csv.DictReader(csv_file, columns)
-                reader = [
-                    {key: int(value) for key, value in row.items()}
-                    for row in reader
-                ]
-                return [cls.create(**(args)) for args in reader]
-        except IOError:
+        if not os.path.isfile(filename):
             return []
+
+        with open(filename, mode="r", encoding="utf-8") as csv_file:
+            if cls.__name__ == "Rectangle":
+                columns = ["id", "width", "height", "x", "y"]
+            else:
+                columns = ["id", "size", "x", "y"]
+
+            reader = csv.DictReader(csv_file, columns)
+            reader = [
+                {key: int(value) for key, value in row.items()}
+                for row in reader
+            ]
+            return [cls.create(**(args)) for args in reader]
 
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
         Draws a bunch of rectangles and squares graphically on screen.
         """
-        screen = turtle.Screen()
-        screen.setup(1200, 720)
-        t = turtle.Turtle()
+        with turtle.Screen() as screen:
+            screen.setup(1200, 720)
+            t = turtle.Turtle()
 
-        total_height = 0
+            total_height = 0
 
-        if list_rectangles:
-            rec_width = list_rectangles[0].width * 2
-            rec_height = list_rectangles[0].height * 2
-            t.begin_fill()
-            t.color("pink", "purple")
-            t.forward(rec_width)
-            t.left(90)
-            t.forward(rec_height)
-            t.left(90)
-            t.forward(rec_width)
-            t.left(90)
-            t.forward(rec_height)
-            t.end_fill()
-            total_height += rec_height
-
-        if len(list_rectangles) > 1:
-            for rec in list_rectangles[1:]:
-                rec_h = rec.height * 2
-                rec_w = rec.width * 2
-                t.forward(rec_h)
-                t.left(90)
-
+            if list_rectangles:
+                rec_width = list_rectangles[0].width * 2
+                rec_height = list_rectangles[0].height * 2
                 t.begin_fill()
                 t.color("pink", "purple")
-                t.forward(rec_w)
+                t.forward(rec_width)
                 t.left(90)
-                t.forward(rec_h)
+                t.forward(rec_height)
                 t.left(90)
-                t.forward(rec_w)
+                t.forward(rec_width)
                 t.left(90)
-                t.forward(rec_h)
+                t.forward(rec_height)
                 t.end_fill()
-                total_height += rec_h
+                total_height += rec_height
 
-        for sqr in list_squares:
-            sqr_size = sqr.width * 2
-            t.right(180)
-            t.forward(total_height)
-            t.left(90)
-            t.forward(50)
+            if len(list_rectangles) > 1:
+                for rec in list_rectangles[1:]:
+                    rec_h = rec.height * 2
+                    rec_w = rec.width * 2
+                    t.forward(rec_h)
+                    t.left(90)
 
-            t.begin_fill()
-            t.color("#39E745", "#39E745")
-            for _ in range(4):
-                t.forward(sqr_size)
+                    t.begin_fill()
+                    t.color("pink", "purple")
+                    t.forward(rec_w)
+                    t.left(90)
+                    t.forward(rec_h)
+                    t.left(90)
+                    t.forward(rec_w)
+                    t.left(90)
+                    t.forward(rec_h)
+                    t.end_fill()
+                    total_height += rec_h
+
+            for sqr in list_squares:
+                sqr_size = sqr.width * 2
+                t.right(180)
+                t.forward(total_height)
                 t.left(90)
-            t.end_fill()
+                t.forward(50)
 
-        turtle.done()
+                t.begin_fill()
+                t.color("#39E745", "#39E745")
+                for _ in range(4):
+                    t.forward(sqr_size)
+                    t.left(90)
+                t.end_fill()
+
+            turtle.done()
