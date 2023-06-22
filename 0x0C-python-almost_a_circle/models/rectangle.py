@@ -32,14 +32,14 @@ class Rectangle(Base):
 
     # >>>>>>>>>>>>>>>>>>>   WIDTH   <<<<<<<<<<<<<<<<<<<<
     @property
-    def width(self):
+    def width(self) -> int:
         """
         int: The width of the rectangle.
         """
         return self.__width
 
     @width.setter
-    def width(self, value):
+    def width(self, value: int):
         """
         Sets the width of the rectangle.
 
@@ -51,14 +51,14 @@ class Rectangle(Base):
 
     # >>>>>>>>>>>>>>>>>>>   HEIGHT   <<<<<<<<<<<<<<<<<<<<
     @property
-    def height(self):
+    def height(self) -> int:
         """
         int: The height of the rectangle.
         """
         return self.__height
 
     @height.setter
-    def height(self, value):
+    def height(self, value: int):
         """
         Sets the height of the rectangle.
 
@@ -70,14 +70,14 @@ class Rectangle(Base):
 
     # >>>>>>>>>>>>>>>>>>>   X   <<<<<<<<<<<<<<<<<<<<
     @property
-    def x(self):
+    def x(self) -> int:
         """
         int: The x-coordinate of the rectangle's position.
         """
         return self.__x
 
     @x.setter
-    def x(self, value):
+    def x(self, value: int):
         """
         Sets the x-coordinate of the rectangle's position.
 
@@ -89,14 +89,14 @@ class Rectangle(Base):
 
     # >>>>>>>>>>>>>>>>>>>   Y   <<<<<<<<<<<<<<<<<<<<
     @property
-    def y(self):
+    def y(self) -> int:
         """
         int: The y-coordinate of the rectangle's position.
         """
         return self.__y
 
     @y.setter
-    def y(self, value):
+    def y(self, value: int):
         """
         Sets the y-coordinate of the rectangle's position.
 
@@ -106,12 +106,12 @@ class Rectangle(Base):
         self._validate_attr(value, "y")
         self.__y = value
 
-    def _validate_attr(self, value: any, name: str):
+    def _validate_attr(self, value: int, name: str):
         """
         Validates the attribute value.
 
         Args:
-            value (any): The attribute value to validate.
+            value (int): The attribute value to validate.
             name (str): The name of the attribute.
         Raises:
             TypeError: If the value is not an integer.
@@ -180,7 +180,7 @@ class Rectangle(Base):
                     setattr(self, attrs[idx], arg)
             else:
                 for key, value in kwargs.items():
-                    setattr(self, key, value)
+                    setattr(self, key.lower(), value)
         except (IndexError, AttributeError):
             return
 
