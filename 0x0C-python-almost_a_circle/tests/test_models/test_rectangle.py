@@ -5,6 +5,7 @@ import sys
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from pathlib import Path
 
 
 class TestRectangleInstantiation(unittest.TestCase):
@@ -984,6 +985,75 @@ class TestRectangleCreate(unittest.TestCase):
         self.assertEqual(rect.height, 2)
         self.assertEqual(rect.x, 3)
         self.assertEqual(rect.y, 4)
+
+
+class RectangleSaveToFile(unittest.TestCase):
+    """
+    Unit tests for testing the save_to_file method of the Rectangle class.
+    """
+
+    def test_rectangle_save_to_file_none(self):
+        """
+        Test the save_to_file method with default.
+        """
+        Rectangle.save_to_file(None)
+        self.assertTrue(Path("Rectangle.json").is_file())
+        objs = Rectangle.load_from_file()
+        self.assertEqual(len(objs), 0)
+
+    def test_rectangle_save_to_file_empty_list(self):
+        """
+        Test method for testing the save_to_file method with nothing.
+        """
+        Rectangle.save_to_file([])
+        objs = Rectangle.load_from_file()
+        self.assertEqual(len(objs), 0)
+
+    def test_rectangle_save_to_file_list(self):
+        """
+        Test method for testing the save_to_file method with a list.
+        """
+        Rectangle.save_to_file([Rectangle(1, 2, 3, 4, 5)])
+        objs = Rectangle.load_from_file()
+        self.assertEqual(len(objs), 1)
+        self.assertIsInstance(objs[0], Rectangle)
+        self.assertEqual(objs[0].id, 5)
+        self.assertEqual(objs[0].width, 1)
+        self.assertEqual(objs[0].height, 2)
+        self.assertEqual(objs[0].x, 3)
+        self.assertEqual(objs[0].y, 4)
+
+
+class TestRectangleLoadFromFile(unittest.TestCase):
+    """Unit tests for testing the load_from_file method of Rectangle."""
+
+    def setUp(self):
+        """
+        Removes the Rectangle.json file if it exists.
+        """
+        if Path("Rectangle.json").is_file():
+            Path("Rectangle.json").unlink()
+
+    def test_rectangle_load_from_file_no_file(self):
+        """
+        Test the load_from_file method with missing Rectangle.json file.
+        """
+        self.assertFalse(Path("Rectangle.json").is_file())
+        self.assertEqual(Rectangle.load_from_file(), [])
+
+    def test_rectangle_load_from_existing_file(self):
+        """
+        Test the load_from_file method with existing Rectangle.json file.
+        """
+        Rectangle.save_to_file([Rectangle(1, 2, 3, 4, 5)])
+        objs = Rectangle.load_from_file()
+        self.assertEqual(len(objs), 1)
+        self.assertIsInstance(objs[0], Rectangle)
+        self.assertEqual(objs[0].id, 5)
+        self.assertEqual(objs[0].width, 1)
+        self.assertEqual(objs[0].height, 2)
+        self.assertEqual(objs[0].x, 3)
+        self.assertEqual(objs[0].y, 4)
 
 
 if __name__ == "__main__":
