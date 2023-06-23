@@ -70,7 +70,15 @@ class Base:
         Returns:
             object: An instance of a class that inherits from this class.
         """
-        return cls(**dictionary)
+
+        if cls.__name__ == "Rectangle":
+            dummy = cls(8, 4)
+
+        if cls.__name__ == "Square":
+            dummy = cls(7)
+
+        dummy.update(**dictionary)
+        return dummy
 
     @classmethod
     def load_from_file(cls) -> list:
