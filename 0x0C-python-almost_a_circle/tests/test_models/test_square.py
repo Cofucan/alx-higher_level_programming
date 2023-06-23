@@ -6,6 +6,7 @@ of the Square class
 import unittest
 from models.base import Base
 from models.square import Square
+from pathlib import Path
 
 
 class TestSquare(unittest.TestCase):
@@ -146,6 +147,70 @@ class TestSquareCreate(unittest.TestCase):
         self.assertEqual(sqr.size, 7)
         self.assertEqual(sqr.x, 8)
         self.assertEqual(sqr.y, 9)
+
+
+class TestSquareSaveToFile(unittest.TestCase):
+    """Unit tests for testing the save_to_file method of Square."""
+
+    def test_rectangle_save_to_file(self):
+        """
+        Test the save_to_file method with default.
+        """
+        Square.save_to_file(None)
+        objs = Square.load_from_file()
+        self.assertEqual(len(objs), 0)
+
+    def test_square_save_to_file(self):
+        """
+        Test method for testing the save_to_file method with nothing.
+        """
+        Square.save_to_file([])
+        objs = Square.load_from_file()
+        self.assertEqual(len(objs), 0)
+
+    def test_square_save_to_file_2(self):
+        """
+        Test method for testing the save_to_file method with a list.
+        """
+        Square.save_to_file([Square(1, 2, 3, 4)])
+        objs = Square.load_from_file()
+        self.assertEqual(len(objs), 1)
+        self.assertIsInstance(objs[0], Square)
+        self.assertEqual(objs[0].id, 4)
+        self.assertEqual(objs[0].x, 2)
+        self.assertEqual(objs[0].y, 3)
+        self.assertEqual(objs[0].size, 1)
+
+
+class TestSquareLoadFromFile(unittest.TestCase):
+    """Unit tests for testing the load_from_file method of Square."""
+
+    def setUp(self):
+        """
+        Removes the Square.json file if it exists.
+        """
+        if Path("Square.json").is_file():
+            Path("Square.json").unlink()
+
+    def test_square_load_from_file_no_file(self):
+        """
+        Test the load_from_file method with missing Square.json file.
+        """
+        self.assertFalse(Path("Square.json").is_file())
+        self.assertEqual(Square.load_from_file(), [])
+
+    def test_square_load_from_existing_file(self):
+        """
+        Test the load_from_file method with existing Square.json file.
+        """
+        Square.save_to_file([Square(1, 2, 3, 4)])
+        objs = Square.load_from_file()
+        self.assertEqual(len(objs), 1)
+        self.assertIsInstance(objs[0], Square)
+        self.assertEqual(objs[0].id, 4)
+        self.assertEqual(objs[0].x, 2)
+        self.assertEqual(objs[0].y, 3)
+        self.assertEqual(objs[0].size, 1)
 
 
 if __name__ == "__main__":
