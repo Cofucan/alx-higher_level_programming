@@ -109,14 +109,43 @@ class TestSquareCreate(unittest.TestCase):
     with the attributes updated.
     """
 
-    def test_square_create(self):
+    def test_square_create_1_arg(self):
         """
         Test if the create method returns a Square instance with
-        the attributes updated.
+        the one attribute updated.
         """
         sqr = Square.create(**{"id": 6})
-        self.assertIsInstance(sqr, Square)
         self.assertEqual(sqr.id, 6)
+
+    def test_square_create_2_args(self):
+        """
+        Test if the create method returns a Square instance with
+        two attributes updated.
+        """
+        sqr = Square.create(**{"id": 6, "size": 7})
+        self.assertEqual(sqr.id, 6)
+        self.assertEqual(sqr.size, 7)
+
+    def test_square_create_3_args(self):
+        """
+        Test if the create method returns a Square instance with
+        three attributes updated.
+        """
+        sqr = Square.create(**{"id": 6, "size": 7, "x": 8})
+        self.assertEqual(sqr.id, 6)
+        self.assertEqual(sqr.size, 7)
+        self.assertEqual(sqr.x, 8)
+
+    def test_square_create_4_args(self):
+        """
+        Test if the create method returns a Square instance with
+        four attributes updated.
+        """
+        sqr = Square.create(**{"id": 6, "size": 7, "x": 8, "y": 9})
+        self.assertEqual(sqr.id, 6)
+        self.assertEqual(sqr.size, 7)
+        self.assertEqual(sqr.x, 8)
+        self.assertEqual(sqr.y, 9)
 
 
 if __name__ == "__main__":
