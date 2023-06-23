@@ -934,17 +934,56 @@ class TestRectangleCreate(unittest.TestCase):
     inherited from the Base class.
     """
 
-    def test_rectangle_create(self):
+    def test_rectangle_create_1_arg(self):
         """
         Test if the create method returns a new Rectangle instance
-        with the attributes updated.
+        with one attribute updated.
         """
         rect = Rectangle.create(**{'id': 89, 'width': 1})
         self.assertIsInstance(rect, Rectangle)
+
+    def test_rectangle_create_2_args(self):
+        """
+        Test if the create method returns a new Rectangle instance
+        with two attributes updated.
+        """
+        rect = Rectangle.create(**{'id': 76, 'width': 112})
+        self.assertEqual(rect.id, 76)
+        self.assertEqual(rect.width, 112)
+
+    def test_rectangle_create_3_args(self):
+        """
+        Test if the create method returns a new Rectangle instance
+        with three attributes updated.
+        """
         rect = Rectangle.create(**{'id': 24, 'width': 25, 'height': 11})
         self.assertEqual(rect.id, 24)
         self.assertEqual(rect.width, 25)
         self.assertEqual(rect.height, 11)
+
+    def test_rectangle_create_4_args(self):
+        """
+        Test if the create method returns a new Rectangle instance
+        with four attributes updated.
+        """
+        rect = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3})
+        self.assertEqual(rect.id, 89)
+        self.assertEqual(rect.width, 1)
+        self.assertEqual(rect.height, 2)
+        self.assertEqual(rect.x, 3)
+
+    def test_rectangle_create_5_args(self):
+        """
+        Test if the create method returns a new Rectangle instance
+        with five attributes updated.
+        """
+        rect = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3,
+                                   'y': 4})
+        self.assertEqual(rect.id, 89)
+        self.assertEqual(rect.width, 1)
+        self.assertEqual(rect.height, 2)
+        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.y, 4)
 
 
 if __name__ == "__main__":
