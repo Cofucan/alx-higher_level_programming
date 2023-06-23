@@ -3,9 +3,10 @@
 import io
 import sys
 import unittest
+from pathlib import Path
+
 from models.base import Base
 from models.rectangle import Rectangle
-from pathlib import Path
 
 
 class TestRectangleInstantiation(unittest.TestCase):
@@ -1008,6 +1009,7 @@ class RectangleSaveToFile(unittest.TestCase):
         Rectangle.save_to_file([])
         objs = Rectangle.load_from_file()
         self.assertEqual(len(objs), 0)
+        self.assertIsInstance(objs, list)
 
     def test_rectangle_save_to_file_list(self):
         """

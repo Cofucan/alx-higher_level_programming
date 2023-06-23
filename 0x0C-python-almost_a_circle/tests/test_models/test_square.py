@@ -4,13 +4,69 @@ A module that test differents behaviors
 of the Square class
 """
 import unittest
+from pathlib import Path
+
 from models.base import Base
 from models.square import Square
-from pathlib import Path
 
 
 class TestSquare(unittest.TestCase):
     """Unit tests for testing the Square class."""
+
+    def test_two_valid_args(self):
+        """Test of Square instance with size and x values."""
+        square = Square(12, 44)
+        self.assertEqual(square.size, 12)
+        self.assertEqual(square.x, 44)
+        self.assertEqual(square.y, 0)
+
+    def test_three_valid_args(self):
+        """Test of Square instance with size, x and y values."""
+        square = Square(15, 33, 88)
+        self.assertEqual(square.size, 15)
+        self.assertEqual(square.x, 33)
+        self.assertEqual(square.y, 88)
+
+    def test_size_init_string_size(self):
+        """Test of Square instance with invalid string argument."""
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("45")
+
+    def test_size_init_string_x(self):
+        """Test of Square instance with invalid string argument for `x`."""
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(45, "11")
+
+    def test_size_init_string_y(self):
+        """Test of Square instance with invalid string argument for `y`."""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(45, 11, "3")
+
+    def test_size_init_negative_size(self):
+        """Test of Square instance with negative argument for `size`."""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-6)
+
+    def test_size_init_negative_x(self):
+        """Test of Square instance with negative argument for `x`."""
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Square(6, -7)
+
+    def test_size_init_negative_y(self):
+        """Test of Square instance with negative argument for `y`."""
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Square(6, 7, -8)
+
+    def test_size_init_zero_size(self):
+        """Test of Square instance with size argument as 0."""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(0)
+
+    def test_square_str(self):
+        """Test the __str__ method of the Square instance."""
+        sqr = Square(30, 15, 16, 222)
+        sqr_str = "[Square] (222) 15/16 - 30"
+        self.assertEqual(str(sqr), sqr_str)
 
     def test_getter(self):
         """Test the getter method of Square."""
@@ -167,6 +223,7 @@ class TestSquareSaveToFile(unittest.TestCase):
         Square.save_to_file([])
         objs = Square.load_from_file()
         self.assertEqual(len(objs), 0)
+        self.assertIsInstance(objs, list)
 
     def test_square_save_to_file_list(self):
         """
