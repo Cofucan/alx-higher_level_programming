@@ -928,7 +928,7 @@ class TestRectangleToDictionary(unittest.TestCase):
             self.rect.to_dictionary(1)
 
 
-class TestCreate(unittest.TestCase):
+class TestRectangleCreate(unittest.TestCase):
     """
     Unit tests for testing the create method of the Rectangle class
     inherited from the Base class.
@@ -936,7 +936,8 @@ class TestCreate(unittest.TestCase):
 
     def test_rectangle_create(self):
         """
-        Test if the create method returns a new Rectangle instance.
+        Test if the create method returns a new Rectangle instance
+        with the attributes updated.
         """
         rect = Rectangle.create(**{'id': 89, 'width': 1})
         self.assertIsInstance(rect, Rectangle)

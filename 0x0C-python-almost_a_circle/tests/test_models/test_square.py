@@ -103,5 +103,21 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(square_dict, expected)
 
 
+class TestSquareCreate(unittest.TestCase):
+    """
+    Test if the create method returns a new Square instance
+    with the attributes updated.
+    """
+
+    def test_square_create(self):
+        """
+        Test if the create method returns a Square instance with
+        the attributes updated.
+        """
+        sqr = Square.create(**{"id": 6})
+        self.assertIsInstance(sqr, Square)
+        self.assertEqual(sqr.id, 6)
+
+
 if __name__ == "__main__":
     unittest.main()
