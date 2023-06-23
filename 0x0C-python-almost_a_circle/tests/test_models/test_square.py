@@ -152,7 +152,7 @@ class TestSquareCreate(unittest.TestCase):
 class TestSquareSaveToFile(unittest.TestCase):
     """Unit tests for testing the save_to_file method of Square."""
 
-    def test_rectangle_save_to_file(self):
+    def test_square_save_to_file_none(self):
         """
         Test the save_to_file method with default.
         """
@@ -160,7 +160,7 @@ class TestSquareSaveToFile(unittest.TestCase):
         objs = Square.load_from_file()
         self.assertEqual(len(objs), 0)
 
-    def test_square_save_to_file(self):
+    def test_square_save_to_file_empty_list(self):
         """
         Test method for testing the save_to_file method with nothing.
         """
@@ -168,7 +168,7 @@ class TestSquareSaveToFile(unittest.TestCase):
         objs = Square.load_from_file()
         self.assertEqual(len(objs), 0)
 
-    def test_square_save_to_file_2(self):
+    def test_square_save_to_file_list(self):
         """
         Test method for testing the save_to_file method with a list.
         """
