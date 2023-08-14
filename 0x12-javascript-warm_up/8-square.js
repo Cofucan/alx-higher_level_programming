@@ -8,6 +8,6 @@ if (!argv[2] || !parseInt(argv[2])) {
 const num = parseInt(argv[2]);
 if (num > 0) {
   for (let n = 0; n < num; n++) {
-    console.log('#'.repeat(num));
+    console.log('X'.repeat(num));
   }
 }
