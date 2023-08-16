@@ -4,6 +4,11 @@ const list = require('./100-data').list;
 
 console.log(list);
 
-const listMap = list.map((n) => n * list.indexOf(n));
+let index = 0;
+const listMap = list.map((n) => {
+  index++;
+  return n * (index - 1);
+}
+);
 
 console.log(listMap);
