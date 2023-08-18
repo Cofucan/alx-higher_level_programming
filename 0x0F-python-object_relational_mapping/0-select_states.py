@@ -7,16 +7,16 @@ import MySQLdb
 username: str = sys.argv[1]
 password: str = sys.argv[2]
 db_name: str = sys.argv[3]
+host: str = "localhost"
+port: int = 3306
+statement: str = """SELECT * FROM states ORDER BY id"""
 
-db = MySQLdb.connect(user=username, password=password, database=db_name)
+db = MySQLdb.connect(
+    user=username, host=host, port=port, password=password, database=db_name
+)
 cursor = db.cursor()
 
-cursor.execute(
-    """
-    SELECT * FROM states ORDER BY id
-    """
-)
-
+cursor.execute(statement)
 rows = cursor.fetchall()
-
-[print(row) for row in rows]
+for row in rows:
+    print(row)
