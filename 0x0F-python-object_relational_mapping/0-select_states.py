@@ -13,7 +13,11 @@ if __name__ == "__main__":
     statement: str = """SELECT * FROM states ORDER BY id"""
 
     db = MySQLdb.connect(
-        user=username, host=host, port=port, password=password, database=db_name
+        user=username,
+        host=host,
+        port=port,
+        password=password,
+        database=db_name,
     )
     cursor = db.cursor()
 
