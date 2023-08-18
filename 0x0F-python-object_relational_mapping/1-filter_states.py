@@ -12,7 +12,10 @@ if __name__ == "__main__":
     host: str = "localhost"
     port: int = 3306
     statement: str = """
-    SELECT * FROM states WHERE name REGEXP '^N' ORDER BY id
+    SELECT *
+    FROM states
+    WHERE BINARY name LIKE 'N%'
+    ORDER BY id
     """
 
     db = MySQLdb.connect(
