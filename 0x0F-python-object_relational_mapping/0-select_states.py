@@ -4,15 +4,14 @@
 import sys
 import MySQLdb
 
-username: str = sys.argv[1]
-password: str = sys.argv[2]
-db_name: str = sys.argv[3]
-host: str = "localhost"
-port: int = 3306
-statement: str = """SELECT * FROM states ORDER BY id"""
-
-
 if __name__ == "__main__":
+    username: str = sys.argv[1]
+    password: str = sys.argv[2]
+    db_name: str = sys.argv[3]
+    host: str = "localhost"
+    port: int = 3306
+    statement: str = """SELECT * FROM states ORDER BY id"""
+
     db = MySQLdb.connect(
         user=username, host=host, port=port, password=password, database=db_name
     )
