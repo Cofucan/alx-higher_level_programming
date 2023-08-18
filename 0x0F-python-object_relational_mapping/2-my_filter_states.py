@@ -15,7 +15,7 @@ if __name__ == "__main__":
     statement: str = """
     SELECT *
     FROM states
-    WHERE name = '{}'
+    WHERE BINARY name = '{}'
     ORDER BY id
     """.format(arg)
 
