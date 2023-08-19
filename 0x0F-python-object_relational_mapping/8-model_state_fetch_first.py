@@ -3,6 +3,7 @@
 This script prints the first State object from the database hbtn_0e_6_usa
 """
 
+
 import sys
 
 from sqlalchemy import (create_engine)
@@ -26,5 +27,5 @@ if __name__ == "__main__":
     Session.configure(bind=engine)
     session = Session()
 
-    query = session.query(State).order_by(State.id).first()
-    print(query.id, query.name, sep=': ')
+    if query := session.query(State).order_by(State.id).first():
+        print(query.id, query.name, sep=': ')
