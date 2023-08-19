@@ -30,4 +30,4 @@ if __name__ == "__main__":
     if query := session.query(State).order_by(State.id).first():
         print(query.id, query.name, sep=': ')
     else:
-        print()
+        print('Nothing')
