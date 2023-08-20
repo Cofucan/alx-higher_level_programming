@@ -3,3 +3,8 @@ greenlet==2.0.2
 pycodestyle==2.10.0
 SQLAlchemy==2.0.20
 typing_extensions==4.7.1
+greenlet==2.0.2
+mysqlclient==2.2.0
+pycodestyle==2.10.0
+SQLAlchemy==2.0.20
+typing_extensions==4.7.1
