@@ -28,7 +28,6 @@ if __name__ == "__main__":
     Session.configure(bind=engine)
     session = Session()
 
-    # if states := session.query(State).order_by(State.id):
     if (
         states := session.query(State)
         .outerjoin(City)
