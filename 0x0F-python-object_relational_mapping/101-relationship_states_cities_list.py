@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     Session = sessionmaker()
     engine = create_engine(
-        f"mysql+mysqldb://{username}:{password}@{host}/{db_name}",
+        f"mysql+mysqldb://{username}:{password}@{host}:{port}/{db_name}",
         pool_pre_ping=True,
     )
     Base.metadata.create_all(engine)
