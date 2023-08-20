@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This script prints all City objects from the database hbtn_0e_14_usa
 including their respective states
@@ -8,7 +9,7 @@ import sys
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
-from model_state import Base, State
+from model_state import Base
 from model_city import City
 
 if __name__ == "__main__":
