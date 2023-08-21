@@ -26,7 +26,7 @@ class State(Base):
 
     cities = relationship(
         "City",
-        order_by="City.id",
+        # order_by="City.id",
         back_populates="state",
         cascade="all, delete, delete-orphan",
     )
