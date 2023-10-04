@@ -1,9 +1,9 @@
 // Wait for the document to be ready
 $(document).ready(
   function () {
-      $('DIV#add_item').click(
+      $('DIV#update_header').click(
         function () {
-            // Add an <li> element to the list
-            $('UL.my_list').append('<li>Item</li>');
+            // Update the text of the header
+            $('header').text('New get header!!!');
         });
 });
